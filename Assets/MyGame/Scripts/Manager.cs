@@ -5,29 +5,43 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     public float speed = 5.0f;
+    public float rotationSpeed = 180f;
 
-    // Update is called once per frame
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.S))
-        {
-            // Move the car forward
-            transform.position += transform.up * speed * Time.deltaTime;
-        }
+       
+
         if (Input.GetKey(KeyCode.W))
         {
-            // Move the car backward
-            transform.position -= transform.up * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            // Move the car to the left
-            transform.position -= transform.right * speed * Time.deltaTime;
+         
+            transform.position += transform.up * speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            // Move the car to the right
+            
+            transform.position -= transform.up * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+           
+            transform.position -= transform.right * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+          
             transform.position += transform.right * speed * Time.deltaTime;
         }
+
+
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * vertical);
+        transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed * horizontal);
+
+
+
     }
 }

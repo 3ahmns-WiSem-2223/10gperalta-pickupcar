@@ -30,7 +30,7 @@ public class Bump : MonoBehaviour
         {
            
             rb.AddForce(coll.contacts[0].normal * -bumpForce, ForceMode2D.Impulse);
-            looseText.SetActive(true);
+            
 
 
         }
